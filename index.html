@@ -1,0 +1,412 @@
+<title>Vishwarajsinh Vegad</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: floating section bar, a deep-teal hero panel with a profile card (the one bold move), then calm light/dark sections on a timeline and card system. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F6F9FB; --fg:#0F1C26; --muted:#4F5F6C; --line:#D5DDE3;
+  --accent:#0A6C88; --accent-fg:#FFFFFF; --accent-soft:#DCEEF3; --ok:#1B8A4B;
+  --shadow:0 1px 2px rgba(15,28,38,.06),0 10px 28px rgba(15,28,38,.07);
+  --hero-bg:#0A1A24; --hero-fg:#EAF2F6; --hero-muted:#9FB6C3; --hero-accent:#6FD3EC; --hero-line:rgba(255,255,255,.09); --hero-card:rgba(255,255,255,.06); --hero-card-line:rgba(255,255,255,.16);
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1319; --surface:#131E27; --surface-2:#0F1920; --fg:#E8EEF3; --muted:#9BADBA; --line:#25343E;
+    --accent:#5CC3DE; --accent-fg:#062029; --accent-soft:#153039; --ok:#4CC27F;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1319; --surface:#131E27; --surface-2:#0F1920; --fg:#E8EEF3; --muted:#9BADBA; --line:#25343E;
+  --accent:#5CC3DE; --accent-fg:#062029; --accent-soft:#153039; --ok:#4CC27F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-block:0 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+button{font:inherit;color:inherit;cursor:pointer}
+.mono{font-family:var(--mono)}
+
+/* bar */
+.bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:21;margin-top:10px;display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 10px 8px 16px;box-shadow:var(--shadow)}
+@supports (backdrop-filter:blur(8px)){.bar{background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(10px)}}
+.brand{font:800 17px/1 var(--display);letter-spacing:-.01em;text-decoration:none;color:var(--fg);flex:none;display:flex;align-items:center;gap:9px}
+.brand i{width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;font:700 12px/1 var(--mono);font-style:normal}
+.nav{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none;justify-content:center}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font:500 13px/1 var(--body);color:var(--muted);text-decoration:none;padding:9px 12px;border-radius:8px;white-space:nowrap}
+.nav a:hover{color:var(--fg);background:var(--accent-soft)}
+.nav a.on{color:var(--accent);background:var(--accent-soft)}
+.theme{flex:none;border:1px solid var(--line);background:var(--surface-2);border-radius:9px;padding:8px 11px;font:500 12px/1 var(--mono)}
+.theme:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{position:relative;margin-top:18px;border-radius:22px;overflow:hidden;color:var(--hero-fg);background:var(--hero-bg);
+  background-image:radial-gradient(900px 420px at 88% -10%,rgba(111,211,236,.20),transparent 60%),linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);
+  background-size:auto,44px 44px,44px 44px;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
+.status{display:inline-flex;align-items:center;gap:9px;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hero-muted);border:1px solid var(--hero-card-line);border-radius:999px;padding:8px 13px}
+.status i{width:8px;height:8px;border-radius:50%;background:#4CC27F;box-shadow:0 0 0 4px rgba(76,194,127,.18);display:inline-block}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,7.4vw,4.6rem);line-height:.98;letter-spacing:-.035em;margin:22px 0 14px;text-wrap:balance}
+.role{font-size:clamp(1rem,2.2vw,1.2rem);color:var(--hero-accent);font-weight:500;margin:0 0 18px}
+.lede{max-width:54ch;margin:0 0 28px;color:var(--hero-muted);font-size:1.03rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:12px 18px;border-radius:10px;font:500 14px/1.2 var(--body);text-decoration:none}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.hero .btn{background:transparent;border-color:var(--hero-card-line);color:var(--hero-fg)}
+.hero .btn:hover{border-color:var(--hero-accent)}
+.hero .btn.primary{background:var(--hero-accent);border-color:var(--hero-accent);color:#062029}
+.card-h{background:var(--hero-card);border:1px solid var(--hero-card-line);border-radius:16px;padding:22px;backdrop-filter:blur(6px)}
+.card-h .top{display:flex;justify-content:space-between;align-items:center;font:500 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted);margin-bottom:16px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:18px}
+.pair div{border:1px solid var(--hero-card-line);border-radius:12px;padding:14px}
+.pair b{display:block;font:800 2.2rem/1 var(--display);letter-spacing:-.02em;color:var(--hero-accent);font-variant-numeric:tabular-nums}
+.pair span{display:block;margin-top:6px;font-size:12.5px;line-height:1.35;color:var(--hero-muted)}
+.rows{display:grid;gap:0;margin:0}
+.rows div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--hero-line);font-size:13.5px}
+.rows dt{font:500 11.5px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hero-muted)}
+.rows dd{margin:0}
+
+/* sections */
+section{padding-block:clamp(36px,6vw,68px) 0;scroll-margin-top:84px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.sec-head{margin-bottom:26px;max-width:62ch}
+h2{font:800 clamp(1.7rem,4vw,2.5rem)/1.08 var(--display);letter-spacing:-.025em;margin:0 0 8px;text-wrap:balance}
+.sub{margin:0;color:var(--muted)}
+.reveal{transform:translateY(14px);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{transform:none}
+
+/* results */
+.explorer{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);transition:border-color .2s,transform .2s,background .2s}
+.tile b{display:block;font:800 2.3rem/1 var(--display);letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.tile span{display:block;margin-top:8px;font-size:13.5px;line-height:1.35;color:var(--muted)}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tile[aria-pressed="true"] b{color:var(--accent)}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow);position:sticky;top:90px}
+.detail .mono{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.detail h3{font:800 2.6rem/1 var(--display);letter-spacing:-.03em;margin:10px 0 4px;color:var(--accent);font-variant-numeric:tabular-nums}
+.detail .what{font:600 15px/1.4 var(--body);margin:0 0 12px}
+.detail p{margin:0}
+.track{height:8px;border-radius:99px;background:var(--accent-soft);margin-top:18px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;background:var(--accent);transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.scope{margin:20px 0 0;font-size:13px;color:var(--muted);max-width:70ch}
+
+/* walkthrough */
+.walk{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:20px;align-items:start}
+.steps{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.step{width:100%;text-align:left;display:flex;align-items:center;gap:14px;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;transition:border-color .2s,background .2s}
+.step:hover{border-color:var(--accent)}
+.step .n{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:500 12px/1 var(--mono);color:var(--muted);background:var(--surface-2)}
+.step[data-done="true"] .n{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.step[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.step[aria-pressed="true"] .n{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.step .t{font:600 15px/1.3 var(--body)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;gap:14px;box-shadow:var(--shadow);position:sticky;top:90px}
+.panel .mono{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.panel h3{font:800 1.9rem/1.1 var(--display);letter-spacing:-.02em;margin:0}
+.panel p{margin:0;max-width:56ch;font-size:1.02rem}
+.panel .next{justify-self:start}
+.progress{height:4px;background:var(--accent-soft);border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
+
+/* experience */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font:500 13px/1 var(--body);transition:border-color .2s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.count{margin:0 0 24px;font:400 13px/1.4 var(--mono);color:var(--muted)}
+.timeline{position:relative;display:grid;gap:18px;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.job{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.job::before{content:"";position:absolute;left:-28px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job h3{font:700 1.2rem/1.3 var(--body);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin:6px 0 16px;font:400 13px/1.5 var(--mono);color:var(--muted)}
+.meta .pill{border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--surface-2)}
+.job ul{margin:0;padding-left:1.15em;display:grid;gap:10px}
+.job li::marker{color:var(--accent)}
+
+/* skills, education */
+.groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.group h3{font:700 13px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px;color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:6px 10px;font-size:13.5px;line-height:1.2}
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.edu article{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.edu .yr{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--accent)}
+.edu h3{font:700 1.1rem/1.35 var(--body);margin:10px 0 4px}
+.edu p{margin:0;color:var(--muted);font-size:14.5px}
+.certs{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.certs li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px}
+.certs .mono{font-size:11px;letter-spacing:.06em;color:var(--accent);margin-right:8px}
+
+/* contact */
+.contact{position:relative;border-radius:22px;overflow:hidden;color:var(--hero-fg);background:var(--hero-bg);padding:clamp(26px,5vw,52px);
+  background-image:radial-gradient(700px 320px at 8% 120%,rgba(111,211,236,.18),transparent 60%),linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);background-size:auto,44px 44px,44px 44px}
+.contact h2{color:var(--hero-fg)}
+.contact p{margin:0 0 20px;color:var(--hero-muted);max-width:54ch}
+.copyrow{display:flex;flex-wrap:wrap;gap:10px;max-width:640px}
+.copyrow input{flex:1 1 280px;min-width:0;border:1px solid var(--hero-card-line);background:var(--hero-card);color:var(--hero-fg);border-radius:10px;padding:12px 14px;font:400 14px/1.2 var(--mono)}
+.contact .btn{background:transparent;border-color:var(--hero-card-line);color:var(--hero-fg)}
+.contact .btn:hover{border-color:var(--hero-accent)}
+.contact .btn.primary{background:var(--hero-accent);border-color:var(--hero-accent);color:#062029}
+.live{margin-top:12px;font:400 13px/1.4 var(--mono);color:var(--hero-accent);min-height:1.4em}
+footer{margin-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font:400 12.5px/1.5 var(--mono);color:var(--muted)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .explorer,.walk{grid-template-columns:minmax(0,1fr)}
+  .detail,.panel{position:static}
+}
+@media (max-width:720px){
+  .groups,.edu{grid-template-columns:minmax(0,1fr)}
+  .brand span{display:none}
+  .nav{justify-content:flex-start}
+}
+@media (max-width:420px){.tiles{grid-template-columns:minmax(0,1fr)}.rows div{grid-template-columns:minmax(0,1fr);gap:2px}}
+</style>
+
+<div class="wrap">
+<div class="bar">
+  <a class="brand" href="#top" aria-label="Back to top"><i>VV</i><span>Vishwarajsinh Vegad</span></a>
+  <nav class="nav" id="nav" aria-label="Sections">
+    <a href="#results">Results</a><a href="#workflow">Workflow</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+</div>
+
+<div class="hero" id="top">
+  <div>
+    <span class="status"><i></i>Open to IT support roles in the GTA</span>
+    <h1>Vishwarajsinh Vegad</h1>
+    <p class="role">IT Support Specialist · Service Desk · Incident Management</p>
+    <p class="lede">Three years of resolving hardware, software, network and account problems for business and residential customers, and for organizations of 1,000+ users. I log and triage carefully, escalate with documented findings, and write the knowledge-base articles that stop the same call coming back.</p>
+    <div class="cta"><a class="btn primary" href="#results">See my results</a><a class="btn" href="#workflow">How I work a ticket</a></div>
+  </div>
+  <aside class="card-h" aria-label="Profile summary">
+    <div class="top"><span>Profile</span><span>Service desk</span></div>
+    <div class="pair">
+      <div><b>87%</b><span>first-contact resolution</span></div>
+      <div><b>91%</b><span>customer satisfaction</span></div>
+    </div>
+    <dl class="rows">
+      <div><dt>Experience</dt><dd>3+ years on service desks</dd></div>
+      <div><dt>Tools</dt><dd>ServiceNow, Genesys Cloud, Microsoft 365, Active Directory</dd></div>
+      <div><dt>Scale</dt><dd>Organizations of 1,000+ users</dd></div>
+      <div><dt>Based in</dt><dd>Greater Toronto Area, Ontario</dd></div>
+    </dl>
+  </aside>
+</div>
+
+<section id="results">
+  <div class="sec-head reveal"><p class="eyebrow">Results</p><h2>Numbers I can explain</h2><p class="sub">Select a result to see the work behind it.</p></div>
+  <div class="explorer reveal">
+    <div class="tiles" id="tiles"></div>
+    <div class="detail" aria-live="polite">
+      <div class="mono">How it happened</div>
+      <h3 id="d-num">87%</h3>
+      <p class="what" id="d-what">first-contact resolution</p>
+      <p id="d-body"></p>
+      <div class="track" id="d-track"><div class="fill" id="d-fill"></div></div>
+    </div>
+  </div>
+  <p class="scope">From my role at Rogers Communications, May 2023 to July 2026, in a high-volume queue averaging 16 tickets a day at a 17-minute handle time.</p>
+</section>
+
+<section id="workflow">
+  <div class="sec-head reveal"><p class="eyebrow">Workflow</p><h2>How I work a ticket</h2><p class="sub">Six steps from the moment a request arrives.</p></div>
+  <div class="walk reveal">
+    <ol class="steps" id="steps"></ol>
+    <div class="panel" aria-live="polite">
+      <div class="mono" id="p-count">Step 1 of 6</div>
+      <h3 id="p-title"></h3>
+      <p id="p-body"></p>
+      <div class="progress"><i id="p-bar"></i></div>
+      <button class="btn next" id="next" type="button">Next step</button>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-head reveal"><p class="eyebrow">Experience</p><h2>Where I have done this work</h2><p class="sub">Filter the highlights by topic.</p></div>
+  <div class="chips" id="chips" role="group" aria-label="Filter highlights"></div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="timeline reveal">
+    <article class="job">
+      <h3>IT Technical Support Specialist</h3>
+      <div class="meta"><span class="pill">Rogers Communications</span><span>May 2023 – July 2026</span></div>
+      <ul>
+        <li data-tags="ticketing">Logged, categorized, prioritized and resolved tickets in ServiceNow in a call-centre environment using Genesys Cloud.</li>
+        <li data-tags="ticketing reporting">Found recurring problems by analyzing trends in reported bugs, then escalated them to 2nd and 3rd-level support with documented findings and followed up until resolution.</li>
+        <li data-tags="networking">Diagnosed DNS, DHCP, TCP/IP, VPN, firewall and router faults with a structured root-cause approach.</li>
+        <li data-tags="knowledge">Wrote and shared knowledge-base articles and step-by-step guidance so customers could fix repeat issues themselves.</li>
+        <li data-tags="microsoft remote">Supported Microsoft 365, Exchange, Citrix, Windows and Linux users, including device setup, account access and VPN.</li>
+      </ul>
+    </article>
+    <article class="job">
+      <h3>IT Technical Support Specialist, Service Desk</h3>
+      <div class="meta"><span class="pill">Teleperformance, Toronto</span><span>September 2022 – January 2023</span></div>
+      <ul>
+        <li data-tags="ticketing">Supported client organizations of 5 to 1,000+ users through ServiceNow incidents under ITIL-based processes.</li>
+        <li data-tags="knowledge">Created and updated knowledge-base articles and trained staff on basic troubleshooting, raising service desk efficiency by 30%.</li>
+        <li data-tags="microsoft">Provisioned and de-provisioned user accounts and administered Group Policy in Active Directory.</li>
+        <li data-tags="remote">Provided remote desktop support with TeamViewer, AnyDesk and Remote Desktop, and monitored servers for availability.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-head reveal"><p class="eyebrow">Skills</p><h2>Tools and technology</h2></div>
+  <div class="groups reveal">
+    <div class="group"><h3>Service desk</h3><ul class="tags"><li>ServiceNow</li><li>Zendesk</li><li>Incident management</li><li>Escalation</li><li>SLA and KPI tracking</li><li>ITIL</li><li>Knowledge base</li></ul></div>
+    <div class="group"><h3>Microsoft and systems</h3><ul class="tags"><li>Windows</li><li>Windows Server</li><li>Microsoft 365</li><li>Exchange</li><li>SharePoint</li><li>Active Directory</li><li>Group Policy</li><li>Citrix</li><li>macOS</li><li>Linux</li></ul></div>
+    <div class="group"><h3>Networking</h3><ul class="tags"><li>TCP/IP</li><li>DNS</li><li>DHCP</li><li>VPN</li><li>Firewalls</li><li>NAT</li><li>Routers</li><li>Switches</li><li>Wi-Fi</li></ul></div>
+    <div class="group"><h3>Support and data</h3><ul class="tags"><li>Genesys Cloud</li><li>TeamViewer</li><li>AnyDesk</li><li>Remote Desktop</li><li>VoIP</li><li>SQL</li><li>Advanced Excel</li><li>Power BI</li></ul></div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-head reveal"><p class="eyebrow">Education</p><h2>Foundations</h2></div>
+  <div class="edu reveal">
+    <article><span class="yr">2021 – 2022</span><h3>Information Technology Business Analysis Operations</h3><p>Conestoga College, Kitchener</p></article>
+    <article><span class="yr">2016 – 2020</span><h3>Bachelor of Engineering, Information Technology</h3><p>Gujarat Technological University</p></article>
+  </div>
+  <ul class="certs reveal">
+    <li><span class="mono">UDEMY</span>Advanced Microsoft Excel</li>
+    <li><span class="mono">UDEMY</span>Power BI</li>
+    <li><span class="mono">UDEMY</span>SQL</li>
+    <li><span class="mono">UDEMY</span>Troubleshooting Fundamentals</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <div class="contact reveal">
+    <p class="eyebrow" style="color:var(--hero-accent)">Contact</p>
+    <h2>Let's talk about your service desk</h2>
+    <p>The best way to reach me is through LinkedIn. Resume and references are available on request.</p>
+    <div class="copyrow">
+      <input id="li" type="text" readonly value="https://www.linkedin.com/in/vishwarajsinh-vegad" aria-label="LinkedIn address">
+      <button class="btn" id="copy" type="button">Copy link</button>
+      <a class="btn primary" href="https://www.linkedin.com/in/vishwarajsinh-vegad" rel="noopener">Open LinkedIn</a>
+    </div>
+    <div class="live" id="live" aria-live="polite"></div>
+  </div>
+</section>
+
+<footer><span>Vishwarajsinh Vegad</span><span>Greater Toronto Area, Ontario</span></footer>
+</div>
+
+<script>
+(function(){
+  var metrics=[
+    ["87%",87,"first-contact resolution","Resolved issues in the first conversation by troubleshooting over phone and remote sessions, using ServiceNow records and the knowledge base."],
+    ["91%",91,"customer satisfaction (CSAT)","Satisfaction score across business and residential customers, supported by clear step-by-step guidance and status updates."],
+    ["78%",78,"fewer recurring incidents","Analyzed trends in reported bugs and repeat issues, escalated them to 2nd and 3rd-level support with documented findings, and followed up with ticket owners."],
+    ["49%",49,"fewer repeat contacts","Used a structured root-cause approach on DNS, DHCP, TCP/IP, VPN, firewall and router or switch faults, so problems stayed fixed."],
+    ["88%",88,"fewer follow-up calls","Wrote and shared knowledge-base articles so customers could handle the same topic themselves next time."],
+    ["629+",null,"Wi-Fi environments improved","Optimized configurations, including Wi-Fi 6E and band steering, and documented the results for other support teams."]
+  ];
+  var steps=[
+    ["Log it properly","Record, categorize and prioritize every request in ServiceNow so nothing is lost and the next person can pick it up with full context."],
+    ["Diagnose","Troubleshoot with a structured root-cause approach, using remote support tools and the knowledge base before guessing."],
+    ["Resolve or escalate","Fix it on first contact where possible. If it needs more, escalate to 2nd or 3rd-level support with documented findings."],
+    ["Follow up","Keep the customer informed and follow up with ticket owners until the issue is closed and the customer is satisfied."],
+    ["Document","Write or update a knowledge-base article so the next person solves the same problem faster."],
+    ["Spot patterns","Review trends in repeat issues and escalate them, which is how recurring incidents dropped by 78%."]
+  ];
+  var tags=[["all","All"],["ticketing","Ticketing"],["networking","Networking"],["knowledge","Knowledge base"],["microsoft","Microsoft and accounts"],["remote","Remote support"],["reporting","Trends and reporting"]];
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+
+  // results explorer
+  var tiles=document.getElementById("tiles"),dN=document.getElementById("d-num"),dW=document.getElementById("d-what"),dB=document.getElementById("d-body"),fill=document.getElementById("d-fill"),track=document.getElementById("d-track");
+  function pick(i){
+    var m=metrics[i];dN.textContent=m[0];dW.textContent=m[2];dB.textContent=m[3];
+    track.style.display=m[1]==null?"none":"block";fill.style.width=(m[1]==null?0:m[1])+"%";
+    tiles.querySelectorAll(".tile").forEach(function(t,k){t.setAttribute("aria-pressed",k===i?"true":"false")});
+  }
+  metrics.forEach(function(m,i){
+    var b=el("button","tile");b.type="button";b.setAttribute("aria-pressed","false");
+    b.appendChild(el("b",null,m[0]));b.appendChild(el("span",null,m[2]));
+    b.addEventListener("click",function(){pick(i)});tiles.appendChild(b);
+  });
+  pick(0);
+
+  // walkthrough
+  var sWrap=document.getElementById("steps"),pc=document.getElementById("p-count"),pt=document.getElementById("p-title"),pb=document.getElementById("p-body"),bar=document.getElementById("p-bar"),nx=document.getElementById("next"),cur=0;
+  function show(i){
+    cur=i;
+    sWrap.querySelectorAll(".step").forEach(function(s,k){s.setAttribute("aria-pressed",k===i?"true":"false");s.setAttribute("data-done",k<i?"true":"false")});
+    pc.textContent="Step "+(i+1)+" of "+steps.length;pt.textContent=steps[i][0];pb.textContent=steps[i][1];
+    bar.style.width=((i+1)/steps.length*100)+"%";nx.textContent=i===steps.length-1?"Start again":"Next step";
+  }
+  steps.forEach(function(s,i){
+    var li=document.createElement("li"),b=el("button","step");b.type="button";b.setAttribute("aria-pressed","false");
+    b.appendChild(el("span","n",String(i+1)));b.appendChild(el("span","t",s[0]));
+    b.addEventListener("click",function(){show(i)});li.appendChild(b);sWrap.appendChild(li);
+  });
+  nx.addEventListener("click",function(){show((cur+1)%steps.length)});
+  show(0);
+
+  // experience filter
+  var chips=document.getElementById("chips"),count=document.getElementById("count"),items=[].slice.call(document.querySelectorAll("#experience li"));
+  function filter(t){
+    var n=0;
+    items.forEach(function(li){var ok=t==="all"||(" "+li.getAttribute("data-tags")+" ").indexOf(" "+t+" ")>-1;li.hidden=!ok;if(ok)n++});
+    document.querySelectorAll("#experience .job").forEach(function(j){j.hidden=!j.querySelector("li:not([hidden])")});
+    count.textContent=t==="all"?"Showing all "+items.length+" highlights":"Showing "+n+" of "+items.length+" highlights";
+  }
+  tags.forEach(function(t,i){
+    var b=el("button","chip",t[1]);b.type="button";b.setAttribute("aria-pressed",i===0?"true":"false");
+    b.addEventListener("click",function(){
+      chips.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed","false")});
+      b.setAttribute("aria-pressed","true");filter(t[0]);
+    });
+    chips.appendChild(b);
+  });
+  filter("all");
+
+  // theme
+  var root=document.documentElement,tb=document.getElementById("theme");
+  function sys(){return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+  function label(){var m=root.getAttribute("data-theme")||sys();tb.textContent=m==="dark"?"Light mode":"Dark mode"}
+  try{var s=localStorage.getItem("vv-theme");if(s==="dark"||s==="light")root.setAttribute("data-theme",s)}catch(e){}
+  label();
+  tb.addEventListener("click",function(){
+    var m=root.getAttribute("data-theme")||sys(),n=m==="dark"?"light":"dark";
+    root.setAttribute("data-theme",n);try{localStorage.setItem("vv-theme",n)}catch(e){}label();
+  });
+
+  // copy link
+  var inp=document.getElementById("li"),live=document.getElementById("live");
+  document.getElementById("copy").addEventListener("click",function(){
+    function done(ok){live.textContent=ok?"Copied.":"Select the address above and copy it.";setTimeout(function(){live.textContent=""},2600)}
+    function fb(){inp.focus();inp.select();var ok=false;try{ok=document.execCommand("copy")}catch(e){}done(ok)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(inp.value).then(function(){done(true)},fb)}else{fb()}
+  });
+
+  // nav highlight and reveal (content is already visible; these only add polish)
+  if("IntersectionObserver" in window){
+    var links={};[].slice.call(document.querySelectorAll("#nav a")).forEach(function(a){links[a.getAttribute("href").slice(1)]=a});
+    var spy=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].classList.toggle("on",k===e.target.id)})}
+    })},{rootMargin:"-35% 0px -55% 0px"});
+    Object.keys(links).forEach(function(k){var s=document.getElementById(k);if(s)spy.observe(s)});
+    var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}})},{threshold:.08});
+    [].slice.call(document.querySelectorAll(".reveal")).forEach(function(n){rv.observe(n)});
+  }else{[].slice.call(document.querySelectorAll(".reveal")).forEach(function(n){n.classList.add("in")})}
+})();
+</script>
